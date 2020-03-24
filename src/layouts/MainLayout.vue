@@ -12,7 +12,17 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Todo App
+        </q-toolbar-title>
+
+        <q-toolbar-title>
+          <q-footer>
+            <q-tabs>
+              <q-route-tab to="/" icon="list" label="Todo"> </q-route-tab>
+              <q-route-tab to="/PageSettings" icon="settings" label="Settings">
+              </q-route-tab>
+            </q-tabs>
+          </q-footer>
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
