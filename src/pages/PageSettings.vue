@@ -1,9 +1,15 @@
 <template>
-  <q-page class="flex flex-center">
-    <p>I am a Page Settings</p>
+  <q-page padding>
+		<p>Settings page</p>
   </q-page>
 </template>
 
 <script>
-export default {};
+	export default {
+
+	}
 </script>
+
+<style>
+	
+</style>
