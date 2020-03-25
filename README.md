@@ -1,3 +1,3 @@
-# Quasar App
+## Quasar App
 
-> WIP
+#### Ruby Jane
