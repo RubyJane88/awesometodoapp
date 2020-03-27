@@ -1,76 +1,25 @@
 <template>
   <q-page class="q-pa-md">
-    <p>Todo Page</p>
-
     <q-list separator bordered>
-      <q-item
-        v-for="task in tasks"
-        :key="task.id"
-        @click="task.completed = !task.completed"
-        :class="!task.completed ? 'bg-orange-1' : 'bg-green-1'"
-        clickable
-        v-ripple
-      >
-        <q-item-section side top>
-          <q-checkbox v-model="task.completed" />
-        </q-item-section>
-
-        <q-item-section>
-          <q-item-label :class="{ 'text-strikethrough': task.completed }">{{
-            task.name
-          }}</q-item-label>
-        </q-item-section>
-
-        <q-item-section side>
-          <div class="row">
-            <div class="column justify-center">
-              <q-icon name="event" size="18px" class="q-mr-xs" />
-            </div>
-            <div class="column">
-              <q-item-label class="row justify-end" caption>
-                {{ task.dueDate }}
-              </q-item-label>
-              <q-item-label class="row justify-end" caption>
-                <small> {{ task.dueTime }}</small>
-              </q-item-label>
-            </div>
-          </div>
-        </q-item-section>
-      </q-item>
+      <task v-for="(task, key) in tasks" :key="key" :id="key" :task="task">
+      </task>
     </q-list>
+
+    <div class="absolute-bottom text-center">
+      <q-btn round color="primary" size="24px" icon="add" />
+    </div>
   </q-page>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  data() {
-    return {
-      tasks: [
-        {
-          id: 1,
-          name: "Go to shop",
-          completed: false,
-          dueDate: "2020/03/25",
-          dueTime: "16:00",
-        },
-
-        {
-          id: 2,
-          name: "Gone bananas",
-          completed: true,
-          dueDate: "2020/03/26",
-          dueTime: "18:00",
-        },
-
-        {
-          id: 3,
-          name: "Get going",
-          completed: false,
-          dueDate: "2020/04/23",
-          dueTime: "16:00",
-        },
-      ],
-    };
+  computed: {
+    ...mapGetters("tasks", ["tasks"]),
+  },
+  components: {
+    task: require("components/Tasks/Task.vue").default,
   },
 };
 </script>
