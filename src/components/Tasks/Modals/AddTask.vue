@@ -12,7 +12,7 @@
             outlined
             v-model="taskToSubmit.name"
             :rules="[(val) => !!val || 'Field is required']"
-            refs="name"
+            ref="name"
             label="Task Name"
             class="col"
           />
@@ -73,6 +73,13 @@ export default {
   methods: {
     SubmitForm() {
       console.log("submitForm");
+      this.$refs.name.validate();
+      if (!this.$refs.name.hasError) {
+        this.submitTask();
+      }
+    },
+    submitTask() {
+      console.log("submitTask");
     },
   },
 };
